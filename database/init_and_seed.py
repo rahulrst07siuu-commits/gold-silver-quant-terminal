@@ -7,7 +7,7 @@ if base_dir not in sys.path:
 
 import database.db_manager as db
 
-proj = r"D:\Downloads\Gold_Silver_Quant_Project"
+proj = base_dir
 gold_csv = os.path.join(proj, "data", "GOLD_HOURLY_INR_CLEAN.csv")
 silver_csv = os.path.join(proj, "data", "SILVER_HOURLY_INR_CLEAN.csv")
 

@@ -17,9 +17,12 @@ if base_dir not in sys.path:
 import dashboard_config as cfg
 import database.db_manager as db_base
 
-def init_phase10_tables():
+def init_phase10_tables(conn=None):
     """Creates Phase 10 audit, anomaly, and data mining governance tables in SQLite."""
-    conn = db_base.get_connection()
+    close_after = False
+    if conn is None:
+        conn = db_base.get_connection()
+        close_after = True
     try:
         cur = conn.cursor()
         
@@ -158,7 +161,8 @@ def init_phase10_tables():
         
         conn.commit()
     finally:
-        conn.close()
+        if close_after:
+            conn.close()
 
 def log_quality_audit(dataset_name, total_rows, total_cols, missing_values, duplicate_rows, ohlc_errors, score, summary):
     """Persists a data quality audit record."""

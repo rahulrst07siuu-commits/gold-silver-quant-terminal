@@ -12,13 +12,15 @@ FEED_STATE_DELAYED_DATA = "DELAYED DATA"
 FEED_STATE_SIMULATION_MODE = "SIMULATION MODE"
 FEED_STATE_FEED_DISCONNECTED = "FEED DISCONNECTED"
 FEED_STATE_HISTORICAL_DATA = "HISTORICAL DATA"
+FEED_STATE_NO_DATA = "NO DATA AVAILABLE"
 
 FEED_STATE_COLORS = {
     FEED_STATE_LIVE_CONNECTED: "#10B981",    # Emerald Green
     FEED_STATE_DELAYED_DATA: "#F59E0B",      # Amber
     FEED_STATE_SIMULATION_MODE: "#06B6D4",   # Cyan
     FEED_STATE_FEED_DISCONNECTED: "#EF4444", # Red
-    FEED_STATE_HISTORICAL_DATA: "#94A3B8"    # Slate Gray
+    FEED_STATE_HISTORICAL_DATA: "#94A3B8",   # Slate Gray
+    FEED_STATE_NO_DATA: "#64748B"            # Muted Slate
 }
 
 def check_live_feed_health(provider=None, force_state=None):
@@ -52,6 +54,7 @@ def check_live_feed_health(provider=None, force_state=None):
             "is_live": False
         }
     
+    db.ensure_db_initialized()
     gold_latest = db.get_latest_quote("gold")
     silver_latest = db.get_latest_quote("silver")
     
@@ -81,8 +84,10 @@ def check_live_feed_health(provider=None, force_state=None):
     if latest_candle_dt is not None:
         try:
             # Normalize naive / timezone if needed
-            ts_naive = latest_candle_dt.tz_localize(None) if latest_candle_dt.tzinfo else latest_candle_dt
-            now_naive = now.tz_localize(None) if now.tzinfo else now
+            ts_dt = pd.to_datetime(latest_candle_dt)
+            ts_naive = ts_dt.tz_localize(None) if getattr(ts_dt, 'tzinfo', None) else ts_dt
+            now_dt = pd.to_datetime(now)
+            now_naive = now_dt.tz_localize(None) if getattr(now_dt, 'tzinfo', None) else now_dt
             age_minutes = max(0.0, (now_naive - ts_naive).total_seconds() / 60.0)
         except Exception:
             age_minutes = 9999.0
@@ -90,6 +95,9 @@ def check_live_feed_health(provider=None, force_state=None):
     # Determine Feed State
     if force_state and force_state in FEED_STATE_COLORS:
         feed_state = force_state
+    elif gold_latest is None and silver_latest is None:
+        feed_state = FEED_STATE_NO_DATA
+        warning_messages.append("No Gold or Silver market data records found in database.")
     else:
         p_status_str = str(provider_status.get("status", "")).upper()
         p_is_live = provider_status.get("is_live", False)
@@ -116,7 +124,9 @@ def check_live_feed_health(provider=None, force_state=None):
     state_color = FEED_STATE_COLORS.get(feed_state, "#94A3B8")
     
     # Determine human-readable freshness text
-    if feed_state == FEED_STATE_LIVE_CONNECTED:
+    if feed_state == FEED_STATE_NO_DATA:
+        freshness_text = "No Market Data Ingested"
+    elif feed_state == FEED_STATE_LIVE_CONNECTED:
         freshness_text = f"Real-Time (< {max(1, int(age_minutes))}m age)"
     elif feed_state == FEED_STATE_DELAYED_DATA:
         freshness_text = f"Delayed ({int(age_minutes)}m age)"
@@ -147,8 +157,8 @@ def check_live_feed_health(provider=None, force_state=None):
         "latest_candle_ts": latest_candle_str,
         "gold_latest_close": gold_latest.get("close") if gold_latest else None,
         "silver_latest_close": silver_latest.get("close") if silver_latest else None,
-        "gold_candle_ts": gold_ts_str,
-        "silver_candle_ts": silver_ts_str,
+        "gold_candle_ts": gold_ts_str if gold_ts_str else "No Gold data available",
+        "silver_candle_ts": silver_ts_str if silver_ts_str else "No Silver data available",
         "gold_contract": gold_contract,
         "silver_contract": silver_contract,
         "warnings": warning_messages

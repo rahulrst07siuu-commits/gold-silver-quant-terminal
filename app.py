@@ -1,5 +1,10 @@
 import streamlit as st
 import dashboard_config as cfg
+import database.db_manager as db
+
+# Ensure database is safely and idempotently initialized on startup
+db.ensure_db_initialized()
+
 from market_monitor.quality_monitor import check_live_feed_health
 from ingestion.market_scheduler import run_ingestion_cycle
 

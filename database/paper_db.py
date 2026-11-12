@@ -8,11 +8,14 @@ import database.db_manager as db_base
 def get_connection():
     return db_base.get_connection()
 
-def init_paper_db():
+def init_paper_db(conn=None):
     """
     Initializes all SQLite tables required for Phase 6 Paper Trading & Risk Management.
     """
-    conn = get_connection()
+    close_after = False
+    if conn is None:
+        conn = get_connection()
+        close_after = True
     cur = conn.cursor()
     
     # 1. Paper Accounts Table
@@ -217,7 +220,8 @@ def init_paper_db():
         """)
         
     conn.commit()
-    conn.close()
+    if close_after:
+        conn.close()
     return True
 
 if __name__ == "__main__":

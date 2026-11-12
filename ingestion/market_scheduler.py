@@ -8,12 +8,11 @@ import database.db_manager as db
 from data_providers.provider_factory import get_market_data_provider
 from data_providers.instrument_master import InstrumentMaster
 
-IST = pytz.timezone("Asia/Kolkata") if "pytz" in globals() else None
+IST = pytz.timezone("Asia/Kolkata")
 
 def get_current_ist_time():
-    # Return local datetime in IST
-    # Local server time is IST (UTC+5:30)
-    return datetime.now()
+    """Return current datetime converted to IST (Asia/Kolkata)."""
+    return datetime.now(IST)
 
 def is_mcx_market_open(now=None):
     if now is None:

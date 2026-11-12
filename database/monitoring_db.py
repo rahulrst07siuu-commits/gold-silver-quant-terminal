@@ -9,12 +9,15 @@ import dashboard_config as cfg
 def get_connection():
     return db_base.get_connection()
 
-def init_monitoring_db():
+def init_monitoring_db(conn=None):
     """
     Initializes all SQLite tables required for Phase 7 Model Lifecycle Management,
     Accuracy Tracking, Drift Detection, Challenger Training, and Registry.
     """
-    conn = get_connection()
+    close_after = False
+    if conn is None:
+        conn = get_connection()
+        close_after = True
     cur = conn.cursor()
     
     # 1. Model Registry Table
@@ -213,7 +216,8 @@ def init_monitoring_db():
     # Register existing Phase 3 Champion Models if not already registered
     seed_initial_champions(cur)
     conn.commit()
-    conn.close()
+    if close_after:
+        conn.close()
     return True
 
 def seed_initial_champions(cur):
