@@ -1,0 +1,96 @@
+{
+  "Gold": {
+    "dataset_rows": 1612,
+    "active_holding_bars": 1,
+    "cash_holding_bars": 1611,
+    "market_exposure_pct": 0.062034739454094295,
+    "return_units_verified": "Log-return (additive in cumsum, exponentiated for equity)",
+    "cost_model_verified": "5.0 bps per unit turnover (charged on entry, exit, and flip)",
+    "total_turnover_units": 2.0,
+    "total_cost_drag_pct": 0.1,
+    "gross_strategy_return_pct": 0.42309327170448996,
+    "net_strategy_return_pct": 0.32361578059441065,
+    "buy_and_hold_return_pct": 0.756540006753359,
+    "max_drawdown_pct": -0.0499875020830598,
+    "buy_hold_max_drawdown_pct": -16.88731940948025,
+    "volatility_audit": {
+      "root_cause_of_0_38_pct_gold_vol": "The 0.38% reported volatility was STRATEGY volatility, NOT asset volatility. Because Gold Random Forest was flat (position=0, return=0.0) for 1,610 out of 1,612 bars (99.88% cash), standard deviation of strategy returns was near zero (0.0000938/bar). The actual underlying Gold asset annualized volatility is ~11.6% to 22.4% depending on annualization factor.",
+      "underlying_asset_bar_std_pct": 0.2883301999085566,
+      "underlying_asset_ann_vol_equity_1638h": 11.669361175561702,
+      "underlying_asset_ann_vol_mcx_3528h": 17.125940124401907,
+      "underlying_asset_ann_vol_global_6048h": 22.423119133529482,
+      "strategy_bar_std_pct": 0.00937639149315191,
+      "strategy_ann_vol_equity_1638h": 0.3794833107727015,
+      "strategy_ann_vol_mcx_3528h": 0.5569292406608761
+    },
+    "sharpe_audit": {
+      "reported_sharpe_rf_zero": 0.8651354201524301,
+      "sharpe_with_inr_rf_6_5_pct_1638h": -16.26341757672309,
+      "sharpe_with_inr_rf_6_5_pct_3528h": -10.401469868328473,
+      "interpretation": "When Rf=6.5% is incorporated, Gold's Sharpe drops to negative because sitting in cash without yielding the risk-free rate incurs an opportunity loss against a 6.5% cash benchmark."
+    },
+    "win_rate_audit": {
+      "reported_win_rate_all_bars_pct": 0.062034739454094295,
+      "active_bars_win_rate_pct": 100.0,
+      "discrete_trades_count": 1,
+      "discrete_trade_win_rate_pct": 100.0,
+      "profit_factor": 999.0,
+      "flaw_note": "Phase 2 calculated win rate as (r > 0).mean() over all bars, including zero-return cash bars. This reported an artificially tiny 0.06% for Gold and 6.05% for Silver. Correct trade-level win rate must evaluate closed trade episodes."
+    },
+    "leakage_and_alignment_audit": {
+      "target_construction": "np.log(next_close / close) strictly for consecutive 1-hour bar",
+      "session_gap_handling": "elapsed == 1 hour strictly enforced; non-consecutive hours dropped",
+      "features_known_at_t": true,
+      "lookahead_leakage_detected": false,
+      "scaling_leakage_detected": false,
+      "train_val_test_integrity": "Chronological 70% / 15% / 15% strictly maintained; final test period uncompromised"
+    }
+  },
+  "Silver": {
+    "dataset_rows": 1621,
+    "active_holding_bars": 259,
+    "cash_holding_bars": 1362,
+    "market_exposure_pct": 15.977791486736582,
+    "return_units_verified": "Log-return (additive in cumsum, exponentiated for equity)",
+    "cost_model_verified": "5.0 bps per unit turnover (charged on entry, exit, and flip)",
+    "total_turnover_units": 376.0,
+    "total_cost_drag_pct": 18.8,
+    "gross_strategy_return_pct": -10.165920015731944,
+    "net_strategy_return_pct": -25.14813808570239,
+    "buy_and_hold_return_pct": -13.461562137527572,
+    "max_drawdown_pct": -26.535733669134785,
+    "buy_hold_max_drawdown_pct": -34.04547786939796,
+    "volatility_audit": {
+      "root_cause_of_0_38_pct_gold_vol": "The 0.38% reported volatility was STRATEGY volatility, NOT asset volatility. Because Gold Random Forest was flat (position=0, return=0.0) for 1,610 out of 1,612 bars (99.88% cash), standard deviation of strategy returns was near zero (0.0000938/bar). The actual underlying Gold asset annualized volatility is ~11.6% to 22.4% depending on annualization factor.",
+      "underlying_asset_bar_std_pct": 0.5057966305500287,
+      "underlying_asset_ann_vol_equity_1638h": 20.47070880935241,
+      "underlying_asset_ann_vol_mcx_3528h": 30.042787098511496,
+      "underlying_asset_ann_vol_global_6048h": 39.33524170467762,
+      "strategy_bar_std_pct": 0.2040527770017629,
+      "strategy_ann_vol_equity_1638h": 8.258467390738481,
+      "strategy_ann_vol_mcx_3528h": 12.120116596383006
+    },
+    "sharpe_audit": {
+      "reported_sharpe_rf_zero": -3.544204326676209,
+      "sharpe_with_inr_rf_6_5_pct_1638h": -4.331275303948505,
+      "sharpe_with_inr_rf_6_5_pct_3528h": -5.737768386542423,
+      "interpretation": "When Rf=6.5% is incorporated, Gold's Sharpe drops to negative because sitting in cash without yielding the risk-free rate incurs an opportunity loss against a 6.5% cash benchmark."
+    },
+    "win_rate_audit": {
+      "reported_win_rate_all_bars_pct": 6.0456508328192475,
+      "active_bars_win_rate_pct": 37.83783783783784,
+      "discrete_trades_count": 188,
+      "discrete_trade_win_rate_pct": 38.297872340425535,
+      "profit_factor": 0.6121913153063683,
+      "flaw_note": "Phase 2 calculated win rate as (r > 0).mean() over all bars, including zero-return cash bars. This reported an artificially tiny 0.06% for Gold and 6.05% for Silver. Correct trade-level win rate must evaluate closed trade episodes."
+    },
+    "leakage_and_alignment_audit": {
+      "target_construction": "np.log(next_close / close) strictly for consecutive 1-hour bar",
+      "session_gap_handling": "elapsed == 1 hour strictly enforced; non-consecutive hours dropped",
+      "features_known_at_t": true,
+      "lookahead_leakage_detected": false,
+      "scaling_leakage_detected": false,
+      "train_val_test_integrity": "Chronological 70% / 15% / 15% strictly maintained; final test period uncompromised"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+# =====================================================================
+# GITIGNORE: GOLD & SILVER QUANTITATIVE INTELLIGENCE TERMINAL
+# Protects secrets, local databases, virtual environments & temporary files
+# =====================================================================
+
+# 1. Environment & Secrets (NEVER COMMIT)
+.env
+.env.*
+*.env
+*.env.local
+!.env.example
+secrets.json
+credentials.json
+*.pem
+*.key
+*.token
+
+# 2. Python Virtual Environments & Runtimes
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+bin/
+lib/
+include/
+
+# 3. Python Bytecode, Caches & Compilations
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+
+# 4. Local SQLite Databases, WAL Files & Backups (Preserve locally)
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+*.sqlite
+*.sqlite3
+database/*.db
+database/*.db-wal
+database/*.db-shm
+database/*.db-journal
+database/backups/
+backups/
+
+# 5. Local Logs & Caches
+*.log
+logs/
+*.log.*
+.cache/
+temp/
+tmp/
+*.tmp
+*.temp
+
+# 6. Streamlit & Web Caches
+.streamlit/
+*/.streamlit/
+
+# 7. Distribution Packages & Archives (Keep repository lean)
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+Gold_Silver_Quant_Project_PORTABLE.zip
+
+# 8. OS & IDE Generated Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 9. Explicit Inclusions (Ensure critical files are never skipped)
+!.gitignore
+!.env.example
+!README.md
+!requirements.txt
+!dashboard_pages/
+!prediction_engine/
+!data_mining/
+!model_monitoring/
+!paper_trading/
+!tests/
+!data/
+!results/

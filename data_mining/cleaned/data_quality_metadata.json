@@ -1,0 +1,121 @@
+{
+  "pipeline_timestamp": "2026-11-12 23:13:32",
+  "engine_version": "Phase 10.1 Data Quality & Mining Engine",
+  "datasets": {
+    "GOLD_HOURLY": {
+      "dataset_name": "GOLD_HOURLY",
+      "asset_name": "GOLD",
+      "frequency": "1h",
+      "raw_rows": 11441,
+      "raw_cols": 11,
+      "validated_rows": 11441,
+      "validated_cols": 15,
+      "model_ready_rows": 11441,
+      "model_ready_cols": 15,
+      "quarantined_records": 0,
+      "retained_genuine_shocks": 0,
+      "retained_high_vol_events": 14,
+      "retained_rollovers": 2,
+      "total_outliers_flagged": 496,
+      "date_range": [
+        "2024-11-06 00:00:00",
+        "2026-11-04 23:00:00"
+      ],
+      "status": "APPROVED_MODEL_READY",
+      "output_file": "D:\\Downloads\\Gold_Silver_Quant_Project\\data_mining\\cleaned\\GOLD_HOURLY_MODEL_READY.csv",
+      "sha256": "4deb5add2c82a260b5df12f644c2ef7660bf090414620a9256b95c1aaf7d0ac6"
+    },
+    "SILVER_HOURLY": {
+      "dataset_name": "SILVER_HOURLY",
+      "asset_name": "SILVER",
+      "frequency": "1h",
+      "raw_rows": 11438,
+      "raw_cols": 11,
+      "validated_rows": 11438,
+      "validated_cols": 15,
+      "model_ready_rows": 11438,
+      "model_ready_cols": 15,
+      "quarantined_records": 0,
+      "retained_genuine_shocks": 15,
+      "retained_high_vol_events": 134,
+      "retained_rollovers": 16,
+      "total_outliers_flagged": 704,
+      "date_range": [
+        "2024-11-06 00:00:00",
+        "2026-11-04 23:00:00"
+      ],
+      "status": "APPROVED_MODEL_READY",
+      "output_file": "D:\\Downloads\\Gold_Silver_Quant_Project\\data_mining\\cleaned\\SILVER_HOURLY_MODEL_READY.csv",
+      "sha256": "3c1b29845d1419298fe535aa4f641d0e2873b088220a9edbe8b76b8c6d3e2dbe"
+    },
+    "GOLD_DAILY": {
+      "dataset_name": "GOLD_DAILY",
+      "asset_name": "GOLD",
+      "frequency": "1d",
+      "raw_rows": 609,
+      "raw_cols": 8,
+      "validated_rows": 609,
+      "validated_cols": 12,
+      "model_ready_rows": 609,
+      "model_ready_cols": 12,
+      "quarantined_records": 0,
+      "retained_genuine_shocks": 0,
+      "retained_high_vol_events": 0,
+      "retained_rollovers": 0,
+      "total_outliers_flagged": 19,
+      "date_range": [
+        "2024-11-06 00:00:00",
+        "2026-11-04 00:00:00"
+      ],
+      "status": "APPROVED_MODEL_READY",
+      "output_file": "D:\\Downloads\\Gold_Silver_Quant_Project\\data_mining\\cleaned\\GOLD_DAILY_MODEL_READY.csv",
+      "sha256": "9eb331846806efd19857fff3e2aef65300bdc4786179d1435a86712d3ba3acb6"
+    },
+    "SILVER_DAILY": {
+      "dataset_name": "SILVER_DAILY",
+      "asset_name": "SILVER",
+      "frequency": "1d",
+      "raw_rows": 609,
+      "raw_cols": 8,
+      "validated_rows": 609,
+      "validated_cols": 12,
+      "model_ready_rows": 609,
+      "model_ready_cols": 12,
+      "quarantined_records": 0,
+      "retained_genuine_shocks": 0,
+      "retained_high_vol_events": 0,
+      "retained_rollovers": 0,
+      "total_outliers_flagged": 27,
+      "date_range": [
+        "2024-11-06 00:00:00",
+        "2026-11-04 00:00:00"
+      ],
+      "status": "APPROVED_MODEL_READY",
+      "output_file": "D:\\Downloads\\Gold_Silver_Quant_Project\\data_mining\\cleaned\\SILVER_DAILY_MODEL_READY.csv",
+      "sha256": "44e86665f8c3509563f5e8223a1cc1d9fce0433166766fe3b5ba0a6918cd1f8e"
+    },
+    "ALIGNED_PAIRS": {
+      "dataset_name": "ALIGNED_PAIRS",
+      "asset_name": "GOLD_SILVER",
+      "frequency": "1h",
+      "raw_rows": 11434,
+      "raw_cols": 5,
+      "validated_rows": 11434,
+      "validated_cols": 9,
+      "model_ready_rows": 11434,
+      "model_ready_cols": 9,
+      "quarantined_records": 0,
+      "retained_genuine_shocks": 0,
+      "retained_high_vol_events": 0,
+      "retained_rollovers": 0,
+      "total_outliers_flagged": 0,
+      "date_range": [
+        "2024-11-06 00:00:00",
+        "2026-11-04 23:00:00"
+      ],
+      "status": "APPROVED_MODEL_READY",
+      "output_file": "D:\\Downloads\\Gold_Silver_Quant_Project\\data_mining\\cleaned\\ALIGNED_PAIRS_MODEL_READY.csv",
+      "sha256": "023d9477568cbcc6ef33c2e25e22a23b8da5aab916da550a980f72d8f7e54266"
+    }
+  }
+}

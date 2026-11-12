@@ -1,0 +1,52 @@
+{
+  "Gold": {
+    "asset": "Gold",
+    "usable_rows": 10742,
+    "train_rows": 7519,
+    "validation_rows": 1611,
+    "test_rows": 1612,
+    "selected_model": "RandomForest",
+    "test_forecast_metrics": {
+      "RMSE_log_return": 0.0028812865412620368,
+      "MAE_log_return": 0.002036660971942093,
+      "Directional_accuracy_pct": 48.759305210918114
+    },
+    "backtest": {
+      "Test_bars": 1612,
+      "Strategy_total_return_pct": 0.32361578059441065,
+      "Buy_hold_total_return_pct": 0.756540006753359,
+      "Annualized_volatility_approx_pct": 0.37948331077270775,
+      "Sharpe_approx": 0.8651354201524301,
+      "Max_drawdown_pct": -0.0499875020830598,
+      "Win_rate_pct": 0.062034739454094295,
+      "Number_of_position_changes": 2
+    },
+    "cost_bps_one_way": 5.0,
+    "mode": "long_flat"
+  },
+  "Silver": {
+    "asset": "Silver",
+    "usable_rows": 10804,
+    "train_rows": 7562,
+    "validation_rows": 1621,
+    "test_rows": 1621,
+    "selected_model": "Ridge",
+    "test_forecast_metrics": {
+      "RMSE_log_return": 0.005090099418698138,
+      "MAE_log_return": 0.003532648027955145,
+      "Directional_accuracy_pct": 49.29056138186304
+    },
+    "backtest": {
+      "Test_bars": 1621,
+      "Strategy_total_return_pct": -25.14813808570239,
+      "Buy_hold_total_return_pct": -13.461562137527572,
+      "Annualized_volatility_approx_pct": 8.258467390738538,
+      "Sharpe_approx": -3.544204326676209,
+      "Max_drawdown_pct": -26.535733669134785,
+      "Win_rate_pct": 6.0456508328192475,
+      "Number_of_position_changes": 376
+    },
+    "cost_bps_one_way": 5.0,
+    "mode": "long_flat"
+  }
+}

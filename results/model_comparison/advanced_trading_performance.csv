@@ -1,0 +1,9 @@
+Asset,Strategy,Total_Return_pct,Max_Drawdown_pct,Sharpe_Ratio_rf65,Sortino_Ratio,Annualized_Vol_pct,Win_Rate_pct,Profit_Factor,Total_Trades,Turnover_Units,Total_Cost_Drag_pct,Market_Exposure_pct
+Gold,Buy_and_Hold,-3.8317726599354285,-17.701573910187758,-0.8730993167500585,0.0,17.1483607259861,100.0,1.0,1,1.0,0.05,100.0
+Gold,Phase2_Baseline_LF,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,0.0
+Gold,Phase3_Improved_LF,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,0.0
+Gold,Phase3_Improved_LS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,0.0
+Silver,Buy_and_Hold,-19.002004756668878,-32.109354340337845,-1.7639098984670805,0.0,29.59237675920974,100.0,1.0,1,1.0,0.05,100.0
+Silver,Phase2_Baseline_LF,-0.3295259981481724,-0.3295259981481724,-17.22566984013171,-17.22566984013171,0.418893826272724,0.0,0.0,1,2.0,0.1,0.06146281499692685
+Silver,Phase3_Improved_LF,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,0.0
+Silver,Phase3_Improved_LS,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,0.0

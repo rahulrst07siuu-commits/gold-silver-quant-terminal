@@ -1,0 +1,25 @@
+{
+  "asset": "Silver",
+  "usable_rows": 10804,
+  "train_rows": 7562,
+  "validation_rows": 1621,
+  "test_rows": 1621,
+  "selected_model": "Ridge",
+  "test_forecast_metrics": {
+    "RMSE_log_return": 0.005090099418698138,
+    "MAE_log_return": 0.003532648027955145,
+    "Directional_accuracy_pct": 49.29056138186304
+  },
+  "backtest": {
+    "Test_bars": 1621,
+    "Strategy_total_return_pct": -25.14813808570239,
+    "Buy_hold_total_return_pct": -13.461562137527572,
+    "Annualized_volatility_approx_pct": 8.258467390738538,
+    "Sharpe_approx": -3.544204326676209,
+    "Max_drawdown_pct": -26.535733669134785,
+    "Win_rate_pct": 6.0456508328192475,
+    "Number_of_position_changes": 376
+  },
+  "cost_bps_one_way": 5.0,
+  "mode": "long_flat"
+}

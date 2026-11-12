@@ -1,0 +1,110 @@
+{
+  "stationarity_tests": {
+    "Gold": {
+      "price": {
+        "ADF": {
+          "stat": -1.684071961088522,
+          "p_value": 0.43933720086317296,
+          "critical_5pct": -2.8618053712501084,
+          "stationary": false
+        },
+        "KPSS": {
+          "stat": 15.593835857742738,
+          "p_value": 0.01,
+          "critical_5pct": 0.463,
+          "stationary": false
+        },
+        "conclusion": "Non-Stationary I(1) Unit Root"
+      },
+      "return": {
+        "ADF": {
+          "stat": -19.066151497719005,
+          "p_value": 0.0,
+          "critical_5pct": -2.8618056883724874,
+          "stationary": true
+        },
+        "KPSS": {
+          "stat": 0.275265953405796,
+          "p_value": 0.1,
+          "critical_5pct": 0.463,
+          "stationary": true
+        },
+        "conclusion": "Stationary I(0)"
+      }
+    },
+    "Silver": {
+      "price": {
+        "ADF": {
+          "stat": -1.3165574311416361,
+          "p_value": 0.6215636377868394,
+          "critical_5pct": -2.861805712797913,
+          "stationary": false
+        },
+        "KPSS": {
+          "stat": 14.825839163514567,
+          "p_value": 0.01,
+          "critical_5pct": 0.463,
+          "stationary": false
+        },
+        "conclusion": "Non-Stationary I(1) Unit Root"
+      },
+      "return": {
+        "ADF": {
+          "stat": -18.02741898150564,
+          "p_value": 2.683081843851377e-30,
+          "critical_5pct": -2.8618058349924373,
+          "stationary": true
+        },
+        "KPSS": {
+          "stat": 0.23961239314239358,
+          "p_value": 0.1,
+          "critical_5pct": 0.463,
+          "stationary": true
+        },
+        "conclusion": "Stationary I(0)"
+      }
+    }
+  },
+  "diagnostics": {
+    "Gold": {
+      "acf_lag1": -0.025203577107140024,
+      "acf_lag2": -0.031310441281091506,
+      "acf_lag24": -0.006932869773929648,
+      "ljung_box_pvalues": {
+        "6": 1.2814520013136147e-05,
+        "12": 3.4358871871552207e-06,
+        "24": 3.620792838188426e-08
+      },
+      "arch_lm_stat": 474.3246003946309,
+      "arch_lm_pvalue": 6.411841114722081e-94,
+      "has_arch_effects": true
+    },
+    "Silver": {
+      "acf_lag1": -0.025729375173289454,
+      "acf_lag2": -0.039706723925658376,
+      "acf_lag24": -0.013111122391845854,
+      "ljung_box_pvalues": {
+        "6": 2.6284394826695436e-07,
+        "12": 1.1294165168297787e-07,
+        "24": 1.1169314338722191e-17
+      },
+      "arch_lm_stat": 329.7109229808812,
+      "arch_lm_pvalue": 2.653445561000988e-63,
+      "has_arch_effects": true
+    }
+  },
+  "models": {},
+  "var_analysis": {
+    "selected_lag_aic": 5,
+    "granger_causality_silver_causes_gold": {
+      "test_stat": 2.809202500615663,
+      "p_value": 0.015345904112761672,
+      "significant_at_5pct": true
+    },
+    "granger_causality_gold_causes_silver": {
+      "test_stat": 2.4576953030385447,
+      "p_value": 0.031079688785766064,
+      "significant_at_5pct": true
+    }
+  }
+}
