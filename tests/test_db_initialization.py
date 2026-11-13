@@ -151,5 +151,28 @@ class TestDatabaseInitialization(unittest.TestCase):
         self.assertFalse(df_candles.empty)
         self.assertIn("close", df_candles.columns)
 
+    def test_database_package_and_module_imports(self):
+        """Verifies package-level and submodule import resolution for database components."""
+        # Test 1: Direct package export
+        import database
+        self.assertTrue(hasattr(database, "ensure_db_initialized"))
+        self.assertTrue(callable(database.ensure_db_initialized))
+
+        # Test 2: Submodule direct function import
+        from database.db_manager import ensure_db_initialized as fn
+        self.assertTrue(callable(fn))
+
+        # Test 3: Submodule aliased import
+        import database.db_manager as db_mod
+        self.assertTrue(hasattr(db_mod, "ensure_db_initialized"))
+
+        # Test 4: Other database submodules
+        import database.paper_db as pdb
+        import database.monitoring_db as mdb
+        import database.backup_manager as bkp
+        self.assertTrue(hasattr(pdb, "init_paper_db"))
+        self.assertTrue(hasattr(mdb, "init_monitoring_db"))
+        self.assertTrue(hasattr(bkp, "DatabaseBackupManager"))
+
 if __name__ == "__main__":
     unittest.main()
