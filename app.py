@@ -13,8 +13,8 @@ st.set_page_config(
 st.markdown(cfg.CUSTOM_CSS, unsafe_allow_html=True)
 
 # 3. Ensure database is safely and idempotently initialized on startup
-import database.db_manager as db
-db.ensure_db_initialized()
+from database.db_manager import ensure_db_initialized
+ensure_db_initialized()
 
 from market_monitor.quality_monitor import check_live_feed_health
 from ingestion.market_scheduler import run_ingestion_cycle
