@@ -1,11 +1,12 @@
 import os
 import sys
+import tempfile
 
-proj = r"D:\Downloads\Gold_Silver_Quant_Project"
+proj = os.path.dirname(os.path.abspath(__file__))
 if proj not in sys.path:
     sys.path.insert(0, proj)
 
-os.environ["MPLCONFIGDIR"] = os.path.join(os.environ.get("TEMP", "C:\\temp"), "mpl")
+os.environ["MPLCONFIGDIR"] = os.path.join(tempfile.gettempdir(), "mpl")
 
 from dashboard_pages import (
     page_market_overview,

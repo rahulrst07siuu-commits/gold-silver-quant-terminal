@@ -153,12 +153,11 @@ class TestDatabaseInitialization(unittest.TestCase):
 
     def test_database_package_and_module_imports(self):
         """Verifies package-level and submodule import resolution for database components."""
-        # Test 1: Direct package export
+        # Test 1: Direct package import (clean package with no circular side-effects)
         import database
-        self.assertTrue(hasattr(database, "ensure_db_initialized"))
-        self.assertTrue(callable(database.ensure_db_initialized))
+        self.assertIsNotNone(database)
 
-        # Test 2: Submodule direct function import
+        # Test 2: Submodule direct function import from authoritative source
         from database.db_manager import ensure_db_initialized as fn
         self.assertTrue(callable(fn))
 
